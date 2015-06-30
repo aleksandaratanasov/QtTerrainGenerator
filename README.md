@@ -1,3 +1,3 @@
 # QtTerrainGenerator
 
-![Alt text](/screenshot/screenshot1.png?raw=true "Basic structure of the interface with the famous GLU teapot on display")
+![Screenshot](screenshots/screenshot1.png "Basic structure of the interface with the famous GLU teapot on display")
