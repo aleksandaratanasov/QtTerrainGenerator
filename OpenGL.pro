@@ -14,11 +14,19 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    glwidget.cpp
+        glwidget.cpp
 
 HEADERS  += mainwindow.h \
-    glwidget.h
+        glwidget.h
 
 FORMS    += mainwindow.ui
 
 LIBS     += -lglut -lGL -lGLU
+
+# Icons are from:
+#   http://www.flaticon.com/packs/extended-ui
+#   http://www.flaticon.com/packs/educational-icons
+#   http://www.flaticon.com/packs/icomoon-free-1
+#   http://www.flaticon.com/packs/art-studio
+#   http://www.flaticon.com/packs/tech-support
+RESOURCES += icons.qrc

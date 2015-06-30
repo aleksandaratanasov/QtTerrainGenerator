@@ -96,7 +96,10 @@ QTabBar::tab:only-one {
 }</string>
         </property>
         <property name="currentIndex">
-         <number>4</number>
+         <number>0</number>
+        </property>
+        <property name="elideMode">
+         <enum>Qt::ElideNone</enum>
         </property>
         <property name="documentMode">
          <bool>false</bool>
@@ -107,31 +110,52 @@ QTabBar::tab:only-one {
         <property name="movable">
          <bool>true</bool>
         </property>
-        <widget class="QWidget" name="tab">
+        <widget class="QWidget" name="tab_display">
+         <attribute name="icon">
+          <iconset resource="icons.qrc">
+           <normaloff>:/icons/display.svg</normaloff>:/icons/display.svg</iconset>
+         </attribute>
          <attribute name="title">
           <string>Display</string>
+         </attribute>
+         <attribute name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Display&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt;Contains settings related to how the models are displayed in the 3D environment such as wireframe view, zooming etc.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </attribute>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <layout class="QGridLayout" name="gridLayout">
-            <item row="0" column="1">
+            <item row="0" column="0">
              <widget class="QCheckBox" name="checkBox">
               <property name="text">
                <string>Wireframe</string>
               </property>
              </widget>
             </item>
-            <item row="0" column="2">
-             <widget class="QPushButton" name="pushButton">
+            <item row="1" column="0">
+             <widget class="QPushButton" name="pushButton_2">
               <property name="text">
-               <string>PushButton</string>
+               <string>Reset zoom</string>
               </property>
              </widget>
             </item>
-            <item row="1" column="1">
-             <widget class="QPushButton" name="pushButton_2">
+            <item row="0" column="2">
+             <widget class="QCheckBox" name="checkBox_2">
               <property name="text">
-               <string>PushButton</string>
+               <string>Enable complex light</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QCheckBox" name="checkBox_3">
+              <property name="text">
+               <string>Enable plants</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="QCheckBox" name="checkBox_4">
+              <property name="text">
+               <string>Enable water</string>
               </property>
              </widget>
             </item>
@@ -139,22 +163,44 @@ QTabBar::tab:only-one {
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="tab_2">
+        <widget class="QWidget" name="tab_terrain">
+         <attribute name="icon">
+          <iconset resource="icons.qrc">
+           <normaloff>:/icons/terrain2.svg</normaloff>:/icons/terrain2.svg</iconset>
+         </attribute>
          <attribute name="title">
           <string>Terrain</string>
          </attribute>
+         <attribute name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Terrain&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt;Contains settings related to the generation of the terrain such as heightmap used, generation algorithm, average height etc.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </attribute>
         </widget>
-        <widget class="QWidget" name="tab_3">
+        <widget class="QWidget" name="tab_plants">
+         <attribute name="icon">
+          <iconset resource="icons.qrc">
+           <normaloff>:/icons/plants.svg</normaloff>:/icons/plants.svg</iconset>
+         </attribute>
          <attribute name="title">
           <string>Plants</string>
          </attribute>
+         <attribute name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Plants&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt;Contains settings related to the generation of the plants that can be placed on the terrain&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </attribute>
         </widget>
-        <widget class="QWidget" name="tab_4">
+        <widget class="QWidget" name="tab_water">
+         <attribute name="icon">
+          <iconset resource="icons.qrc">
+           <normaloff>:/icons/water.svg</normaloff>:/icons/water.svg</iconset>
+         </attribute>
          <attribute name="title">
           <string>Water</string>
          </attribute>
         </widget>
-        <widget class="QWidget" name="tab_5">
+        <widget class="QWidget" name="tab_light">
+         <attribute name="icon">
+          <iconset resource="icons.qrc">
+           <normaloff>:/icons/light.svg</normaloff>:/icons/light.svg</iconset>
+         </attribute>
          <attribute name="title">
           <string>Light</string>
          </attribute>
@@ -231,6 +277,10 @@ QTabBar::tab:only-one {
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionLoad_terrain">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/open.svg</normaloff>:/icons/open.svg</iconset>
+   </property>
    <property name="text">
     <string>Load terrain...</string>
    </property>
@@ -239,6 +289,10 @@ QTabBar::tab:only-one {
    </property>
   </action>
   <action name="actionSave">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/save.svg</normaloff>:/icons/save.svg</iconset>
+   </property>
    <property name="text">
     <string>Save</string>
    </property>
@@ -255,6 +309,10 @@ QTabBar::tab:only-one {
    </property>
   </action>
   <action name="actionClose">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/quit.svg</normaloff>:/icons/quit.svg</iconset>
+   </property>
    <property name="text">
     <string>Close</string>
    </property>
@@ -263,16 +321,28 @@ QTabBar::tab:only-one {
    </property>
   </action>
   <action name="actionHelp">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/help.svg</normaloff>:/icons/help.svg</iconset>
+   </property>
    <property name="text">
     <string>Help</string>
    </property>
   </action>
   <action name="actionAbout">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/about.svg</normaloff>:/icons/about.svg</iconset>
+   </property>
    <property name="text">
     <string>About</string>
    </property>
   </action>
   <action name="actionSettings">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/settings.svg</normaloff>:/icons/settings.svg</iconset>
+   </property>
    <property name="text">
     <string>Settings</string>
    </property>
@@ -290,10 +360,13 @@ QTabBar::tab:only-one {
     <slot>setXRotation(int)</slot>
     <slot>setYRotation(int)</slot>
     <slot>setZRotation(int)</slot>
+    <slot>resetZoom()</slot>
    </slots>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>pushButtonQuit</sender>
@@ -303,7 +376,7 @@ QTabBar::tab:only-one {
    <hints>
     <hint type="sourcelabel">
      <x>561</x>
-     <y>499</y>
+     <y>458</y>
     </hint>
     <hint type="destinationlabel">
      <x>370</x>
@@ -318,8 +391,8 @@ QTabBar::tab:only-one {
    <slot>toggleWireframe(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>561</x>
-     <y>71</y>
+     <x>216</x>
+     <y>455</y>
     </hint>
     <hint type="destinationlabel">
      <x>210</x>
@@ -340,6 +413,22 @@ QTabBar::tab:only-one {
     <hint type="destinationlabel">
      <x>285</x>
      <y>265</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>resetZoom()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>90</x>
+     <y>468</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>32</x>
+     <y>366</y>
     </hint>
    </hints>
   </connection>

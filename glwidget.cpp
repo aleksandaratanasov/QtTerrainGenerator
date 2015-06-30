@@ -2,6 +2,9 @@
 #include <QMouseEvent>
 #include <GL/glut.h>
 #include <iostream>
+#include <math.h>
+
+GLfloat treeRatio = .5;
 
 static void normalizeAngle(int &angle)
 {
@@ -44,6 +47,7 @@ void GLWidget::paintGL() {
   glRotatef(xRot / 16.0, 1.0, 0.0, 0.0);
   glRotatef(yRot / 16.0, 0.0, 1.0, 0.0);
   glRotatef(zRot / 16.0, 0.0, 0.0, 1.0);
+
   glutSolidTeapot(.6);
 }
 
@@ -137,12 +141,19 @@ void GLWidget::setZRotation(int angle)
 }
 
 void GLWidget::setZoom(int zoomDirection) {
-  std::cout << "[INFO] Changing zoom level" << std::endl;
 
   // We increase the Z distance (the axis which points outwards the scene in the direction of the user)
   // based on the direction
   if(zoomDirection == 1) zZoom += .1;
   else if (zoomDirection == -1) zZoom -= .1;
 
+    std::cout << "[INFO] Changing zoom level : " << zZoom << std::endl;
+
+  updateGL();
+}
+
+void GLWidget::resetZoom() {
+  std::cout << "[INFO] Zoom level reset" << std::endl;
+  zZoom = -2.0;
   updateGL();
 }

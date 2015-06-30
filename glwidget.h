@@ -40,6 +40,7 @@ public:
 
 public slots:
   void toggleWireframe(bool checked);
+  void resetZoom();
 
 signals:
   // Rotate around x, y and z axes using mouse

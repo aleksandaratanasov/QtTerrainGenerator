@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/display.svg</file>
+        <file>icons/open.svg</file>
+        <file>icons/plants.svg</file>
+        <file>icons/save.svg</file>
+        <file>icons/settings.svg</file>
+        <file>icons/terrain.svg</file>
+        <file>icons/zoom.svg</file>
+        <file>icons/quit.svg</file>
+        <file>icons/light.svg</file>
+        <file>icons/terrain2.svg</file>
+        <file>icons/water.svg</file>
+        <file>icons/help.svg</file>
+        <file>icons/zoom_in.svg</file>
+        <file>icons/zoom_out.svg</file>
+        <file>icons/about.svg</file>
+    </qresource>
+</RCC>
