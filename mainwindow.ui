@@ -131,13 +131,6 @@ QTabBar::tab:only-one {
               </property>
              </widget>
             </item>
-            <item row="1" column="0">
-             <widget class="QPushButton" name="pushButton_2">
-              <property name="text">
-               <string>Reset zoom</string>
-              </property>
-             </widget>
-            </item>
             <item row="0" column="2">
              <widget class="QCheckBox" name="checkBox_2">
               <property name="text">
@@ -158,6 +151,43 @@ QTabBar::tab:only-one {
                <string>Enable water</string>
               </property>
              </widget>
+            </item>
+            <item row="1" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <widget class="QPushButton" name="pushButton_zoomIn">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="icons.qrc">
+                  <normaloff>:/icons/zoom_in.svg</normaloff>:/icons/zoom_in.svg</iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_zoomOut">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="icons.qrc">
+                  <normaloff>:/icons/zoom_out.svg</normaloff>:/icons/zoom_out.svg</iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_zoomReset">
+                <property name="text">
+                 <string>Reset </string>
+                </property>
+                <property name="icon">
+                 <iconset resource="icons.qrc">
+                  <normaloff>:/icons/zoom.svg</normaloff>:/icons/zoom.svg</iconset>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </item>
@@ -224,7 +254,7 @@ QTabBar::tab:only-one {
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButtonQuit">
+       <widget class="QPushButton" name="pushButton_quit">
         <property name="text">
          <string>Quit</string>
         </property>
@@ -361,6 +391,8 @@ QTabBar::tab:only-one {
     <slot>setYRotation(int)</slot>
     <slot>setZRotation(int)</slot>
     <slot>resetZoom()</slot>
+    <slot>zoomIn()</slot>
+    <slot>zoomOut()</slot>
    </slots>
   </customwidget>
  </customwidgets>
@@ -369,30 +401,14 @@ QTabBar::tab:only-one {
  </resources>
  <connections>
   <connection>
-   <sender>pushButtonQuit</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>561</x>
-     <y>458</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>370</x>
-     <y>285</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>checkBox</sender>
    <signal>toggled(bool)</signal>
    <receiver>myGLWidget</receiver>
    <slot>toggleWireframe(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>216</x>
-     <y>455</y>
+     <x>157</x>
+     <y>454</y>
     </hint>
     <hint type="destinationlabel">
      <x>210</x>
@@ -417,7 +433,7 @@ QTabBar::tab:only-one {
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_2</sender>
+   <sender>pushButton_zoomReset</sender>
    <signal>clicked()</signal>
    <receiver>myGLWidget</receiver>
    <slot>resetZoom()</slot>
@@ -429,6 +445,54 @@ QTabBar::tab:only-one {
     <hint type="destinationlabel">
      <x>32</x>
      <y>366</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_zoomIn</sender>
+   <signal>clicked()</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>zoomIn()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>38</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>42</x>
+     <y>374</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_zoomOut</sender>
+   <signal>clicked()</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>zoomOut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>68</x>
+     <y>473</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>69</x>
+     <y>379</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_quit</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>534</x>
+     <y>449</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>558</x>
+     <y>470</y>
     </hint>
    </hints>
   </connection>

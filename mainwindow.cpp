@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
   ui(new Ui::MainWindow)
 {
   ui->setupUi(this);
+  connect(ui->myGLWidget, SIGNAL(statusChanged(QString)),this, SLOT(setStatus(QString)));
 }
 
 MainWindow::~MainWindow()
@@ -15,4 +16,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionClose_triggered() {
   this->close();
+}
+
+void MainWindow::setStatus(QString statusMsg) {
+  ui->statusBar->showMessage(statusMsg);
 }

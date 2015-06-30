@@ -24,6 +24,8 @@ GLWidget::GLWidget(QWidget *parent) :
   yRot = 0;
   zRot = 0;
   zZoom = -2.0;
+
+  status = "Initialization done";
 }
 
 void GLWidget::initializeGL() {
@@ -68,11 +70,11 @@ void GLWidget::toggleWireframe(bool checked) {
 
   if(checked) {
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    std::cout << "[INFO]: Wireframe ON" << std::endl;
+    setStatus("Wireframe on");
   }
   else {
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    std::cout << "[INFO]: Wireframe OFF" << std::endl;
+    setStatus("Wireframe off");
   }
 
   updateGL();
@@ -144,16 +146,29 @@ void GLWidget::setZoom(int zoomDirection) {
 
   // We increase the Z distance (the axis which points outwards the scene in the direction of the user)
   // based on the direction
-  if(zoomDirection == 1) zZoom += .1;
-  else if (zoomDirection == -1) zZoom -= .1;
+  if(zoomDirection == 1) zoomIn();
+  else if (zoomDirection == -1) zoomOut();
+}
 
-    std::cout << "[INFO] Changing zoom level : " << zZoom << std::endl;
+void GLWidget::zoomIn() {
+  zZoom += .1;
+  setStatus("Zoom in to " + QString::number(zZoom, 'g', 3));
+  updateGL();
+}
 
+void GLWidget::zoomOut() {
+  zZoom -= .1;
+  setStatus("Zoom out to " + QString::number(zZoom, 'g', 3));
   updateGL();
 }
 
 void GLWidget::resetZoom() {
-  std::cout << "[INFO] Zoom level reset" << std::endl;
   zZoom = -2.0;
+  setStatus("Zoom level reset to " + QString::number(zZoom, 'g', 3));
   updateGL();
+}
+
+void GLWidget::setStatus(QString statusMsg) {
+  status = statusMsg;
+  emit statusChanged(status);
 }

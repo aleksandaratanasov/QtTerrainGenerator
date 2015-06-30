@@ -17,6 +17,7 @@ public:
 
 private slots:
   void on_actionClose_triggered();
+  void setStatus(QString statusMsg);
 
 private:
   Ui::MainWindow *ui;

@@ -18,6 +18,7 @@ private:
   int zRot;
   QPoint lastPos;
   float zZoom;
+  QString status; // TODO Display widget status in the statusbar of MainWindow
 
 public:
   explicit GLWidget(QWidget *parent = 0);
@@ -37,16 +38,20 @@ public:
   void setYRotation(int angle);
   void setZRotation(int angle);
   void setZoom(int zoomDirection);
+  void setStatus(QString statusMsg);
 
 public slots:
   void toggleWireframe(bool checked);
   void resetZoom();
+  void zoomIn();
+  void zoomOut();
 
 signals:
   // Rotate around x, y and z axes using mouse
   void xRotationChanged(int angle);
   void yRotationChanged(int angle);
   void zRotationChanged(int angle);
+  void statusChanged(QString statusMsg);
 };
 
 #endif // GLWIDGET_H
