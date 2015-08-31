@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>572</width>
+    <width>612</width>
     <height>532</height>
    </rect>
   </property>
@@ -53,7 +53,7 @@ QTabBar::tab {
     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
                                 stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
-    border: 2px solid #C4C4C3;
+    border: 1px solid #C4C4C3;
     border-bottom-color: #C2C7CB; /* same as the pane color */
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -124,6 +124,38 @@ QTabBar::tab:only-one {
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <layout class="QGridLayout" name="gridLayout">
+            <item row="1" column="3">
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item>
+               <widget class="QCheckBox" name="checkBox_5">
+                <property name="text">
+                 <string>Enable terrain</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="checkBox_4">
+                <property name="text">
+                 <string>Enable water</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="checkBox_2">
+                <property name="text">
+                 <string>Enable complex light</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="checkBox_3">
+                <property name="text">
+                 <string>Enable plants</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
             <item row="0" column="0">
              <widget class="QCheckBox" name="checkBox">
               <property name="text">
@@ -131,61 +163,69 @@ QTabBar::tab:only-one {
               </property>
              </widget>
             </item>
-            <item row="0" column="2">
-             <widget class="QCheckBox" name="checkBox_2">
-              <property name="text">
-               <string>Enable complex light</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="2">
-             <widget class="QCheckBox" name="checkBox_3">
-              <property name="text">
-               <string>Enable plants</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="3">
-             <widget class="QCheckBox" name="checkBox_4">
-              <property name="text">
-               <string>Enable water</string>
-              </property>
-             </widget>
-            </item>
             <item row="1" column="0">
              <layout class="QHBoxLayout" name="horizontalLayout_3">
               <item>
-               <widget class="QPushButton" name="pushButton_zoomIn">
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset resource="icons.qrc">
-                  <normaloff>:/icons/zoom_in.svg</normaloff>:/icons/zoom_in.svg</iconset>
-                </property>
-               </widget>
+               <layout class="QVBoxLayout" name="verticalLayout_3">
+                <item>
+                 <widget class="QPushButton" name="pushButton_zoomIn">
+                  <property name="toolTip">
+                   <string>Zoom in</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="icons.qrc">
+                    <normaloff>:/icons/zoom_in.svg</normaloff>:/icons/zoom_in.svg</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_zoomOut">
+                  <property name="toolTip">
+                   <string>Zoom out</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="icons.qrc">
+                    <normaloff>:/icons/zoom_out.svg</normaloff>:/icons/zoom_out.svg</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_zoomReset">
+                  <property name="toolTip">
+                   <string>Reset zoom to default (-2)</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="icons.qrc">
+                    <normaloff>:/icons/zoom_reset.svg</normaloff>:/icons/zoom_reset.svg</iconset>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
               <item>
-               <widget class="QPushButton" name="pushButton_zoomOut">
-                <property name="text">
-                 <string/>
+               <spacer name="horizontalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
                 </property>
-                <property name="icon">
-                 <iconset resource="icons.qrc">
-                  <normaloff>:/icons/zoom_out.svg</normaloff>:/icons/zoom_out.svg</iconset>
+                <property name="sizeType">
+                 <enum>QSizePolicy::MinimumExpanding</enum>
                 </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_zoomReset">
-                <property name="text">
-                 <string>Reset </string>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
                 </property>
-                <property name="icon">
-                 <iconset resource="icons.qrc">
-                  <normaloff>:/icons/zoom.svg</normaloff>:/icons/zoom.svg</iconset>
-                </property>
-               </widget>
+               </spacer>
               </item>
              </layout>
             </item>
@@ -269,7 +309,7 @@ QTabBar::tab:only-one {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>572</width>
+     <width>612</width>
      <height>22</height>
     </rect>
    </property>
@@ -407,8 +447,8 @@ QTabBar::tab:only-one {
    <slot>toggleWireframe(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>157</x>
-     <y>454</y>
+     <x>163</x>
+     <y>369</y>
     </hint>
     <hint type="destinationlabel">
      <x>210</x>
@@ -433,34 +473,34 @@ QTabBar::tab:only-one {
    </hints>
   </connection>
   <connection>
+   <sender>pushButton_quit</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>601</x>
+     <y>416</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>558</x>
+     <y>470</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>pushButton_zoomReset</sender>
    <signal>clicked()</signal>
    <receiver>myGLWidget</receiver>
    <slot>resetZoom()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>90</x>
-     <y>468</y>
+     <x>49</x>
+     <y>479</y>
     </hint>
     <hint type="destinationlabel">
-     <x>32</x>
-     <y>366</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_zoomIn</sender>
-   <signal>clicked()</signal>
-   <receiver>myGLWidget</receiver>
-   <slot>zoomIn()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>38</x>
-     <y>470</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>42</x>
-     <y>374</y>
+     <x>41</x>
+     <y>302</y>
     </hint>
    </hints>
   </connection>
@@ -471,28 +511,28 @@ QTabBar::tab:only-one {
    <slot>zoomOut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>68</x>
-     <y>473</y>
+     <x>49</x>
+     <y>443</y>
     </hint>
     <hint type="destinationlabel">
-     <x>69</x>
-     <y>379</y>
+     <x>78</x>
+     <y>302</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_quit</sender>
+   <sender>pushButton_zoomIn</sender>
    <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>close()</slot>
+   <receiver>myGLWidget</receiver>
+   <slot>zoomIn()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>534</x>
-     <y>449</y>
+     <x>49</x>
+     <y>407</y>
     </hint>
     <hint type="destinationlabel">
-     <x>558</x>
-     <y>470</y>
+     <x>51</x>
+     <y>302</y>
     </hint>
    </hints>
   </connection>

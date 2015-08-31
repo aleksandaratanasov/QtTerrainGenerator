@@ -76,7 +76,6 @@ void GLWidget::toggleWireframe(bool checked) {
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     setStatus("Wireframe off");
   }
-
   updateGL();
 }
 
@@ -143,7 +142,6 @@ void GLWidget::setZRotation(int angle)
 }
 
 void GLWidget::setZoom(int zoomDirection) {
-
   // We increase the Z distance (the axis which points outwards the scene in the direction of the user)
   // based on the direction
   if(zoomDirection == 1) zoomIn();
@@ -171,4 +169,20 @@ void GLWidget::resetZoom() {
 void GLWidget::setStatus(QString statusMsg) {
   status = statusMsg;
   emit statusChanged(status);
+}
+
+void GLWidget::toggleTerrain(bool flag) {
+  toggleTerrainF = flag;
+}
+
+void GLWidget::togglePlants(bool flag) {
+  togglePlantsF = flag;
+}
+
+void GLWidget::toggleWater(bool flag) {
+  toggleWaterF = flag;
+}
+
+void GLWidget::toggleLight(bool flag) {
+  toggleLightF = flag;
 }
