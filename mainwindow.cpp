@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
   ui->setupUi(this);
   connect(ui->myGLWidget, SIGNAL(statusChanged(QString)),this, SLOT(setStatus(QString)));
   about.setText("QtTerrainGenerator v0.0.1");
+  this->setWindowState(Qt::WindowFullScreen);
 }
 
 MainWindow::~MainWindow()
