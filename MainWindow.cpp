@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
   ui->setupUi(this);
   connect(ui->myGLWidget, SIGNAL(statusChanged(QString)),this, SLOT(setStatus(QString)));
   about.setText("QtTerrainGenerator v0.0.1");
-  this->setWindowState(Qt::WindowFullScreen);
+  //this->setWindowState(Qt::WindowFullScreen);
 }
 
 MainWindow::~MainWindow()
@@ -23,6 +23,11 @@ void MainWindow::on_actionClose_triggered() {
 
 void MainWindow::on_actionAbout_triggered() {
   this->about.exec();
+}
+
+void MainWindow::on_actionFullscreen_toggled() {
+  if(this->isFullScreen()) this->showNormal();
+  else this->showFullScreen();
 }
 
 void MainWindow::on_actionLoad_terrain_triggered() {

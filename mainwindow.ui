@@ -310,7 +310,7 @@ QTabBar::tab:only-one {
      <x>0</x>
      <y>0</y>
      <width>612</width>
-     <height>22</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -321,6 +321,8 @@ QTabBar::tab:only-one {
     <addaction name="actionSettings"/>
     <addaction name="actionSave"/>
     <addaction name="actionSave_As"/>
+    <addaction name="separator"/>
+    <addaction name="actionFullscreen"/>
     <addaction name="separator"/>
     <addaction name="actionClose"/>
    </widget>
@@ -415,6 +417,17 @@ QTabBar::tab:only-one {
    </property>
    <property name="text">
     <string>Settings</string>
+   </property>
+  </action>
+  <action name="actionFullscreen">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Fullscreen</string>
+   </property>
+   <property name="shortcut">
+    <string>F11</string>
    </property>
   </action>
  </widget>

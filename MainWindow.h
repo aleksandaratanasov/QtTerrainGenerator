@@ -19,6 +19,7 @@ namespace Ui {
   private slots:
     void on_actionClose_triggered();
     void on_actionAbout_triggered();
+    void on_actionFullscreen_toggled();
     void on_actionLoad_terrain_triggered();
     void setStatus(QString statusMsg);
 
