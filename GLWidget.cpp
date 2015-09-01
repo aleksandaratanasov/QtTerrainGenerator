@@ -1,4 +1,4 @@
-#include "glwidget.h"
+#include "GLWidget.h"
 #include <QMouseEvent>
 #include <GL/glut.h>
 #include <iostream>
@@ -20,6 +20,8 @@ GLWidget::GLWidget(QWidget *parent) :
 //  connect(&timer, SIGNAL(timeout()), this, SLOT(updateGL()));
 //  timer.start(16);
   toggleWireframeFlag = false;
+
+  toggleTranslation = false;
   xRot = 0;
   yRot = 0;
   zRot = 0;
@@ -82,6 +84,12 @@ void GLWidget::toggleWireframe(bool checked) {
 void GLWidget::mousePressEvent(QMouseEvent *event) {
 //  std::cout << "Mouse pressed\t [" << event->x() << "," << event->y() << "]" << std::endl;
   lastPos = event->pos();
+
+  if(event->buttons() & Qt::MiddleButton) {
+    toggleTranslation = true;
+  }
+  else
+    toggleTranslation = false;
 }
 
 void GLWidget::mouseMoveEvent(QMouseEvent *event) {
@@ -89,15 +97,21 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event) {
   int dx = event->x() - lastPos.x();
   int dy = event->y() - lastPos.y();
 
-  if (event->buttons() & Qt::LeftButton) {
+  if(event->buttons() & Qt::LeftButton) {
     setXRotation(xRot + 8 * dy);
     setYRotation(yRot + 8 * dx);
-  } else if (event->buttons() & Qt::RightButton) {
+  }
+  else if (event->buttons() & Qt::RightButton) {
     setXRotation(xRot + 8 * dy);
     setZRotation(zRot + 8 * dx);
   }
 
   lastPos = event->pos();
+
+  if(toggleTranslation) {
+    // Translate camera horizontally and vertically here
+    std::cout << "Translation activated: moving camera..." << std::endl;
+  }
 }
 
 void GLWidget::wheelEvent(QWheelEvent *event) {
@@ -109,6 +123,10 @@ void GLWidget::wheelEvent(QWheelEvent *event) {
   else if (numSteps == -1) zZoom -= .01;
 
   setZoom(numSteps);
+
+  if((event->buttons() & Qt::MiddleButton) != 0) {
+    std::cout << "MouseWheelEven: wheel pressed" << std::endl;
+  }
 }
 
 void GLWidget::setXRotation(int angle)
@@ -177,12 +195,15 @@ void GLWidget::toggleTerrain(bool flag) {
 
 void GLWidget::togglePlants(bool flag) {
   togglePlantsF = flag;
+  //setStatus("Rendering plants is " + (QString)(flag ? "on" : "off"));
 }
 
 void GLWidget::toggleWater(bool flag) {
   toggleWaterF = flag;
+  //setStatus("Rendering water is " + (QString)(flag ? "on" : "off"));
 }
 
 void GLWidget::toggleLight(bool flag) {
   toggleLightF = flag;
+  //setStatus("Rendering complex light is " + (QString)(flag ? "on" : "off"));
 }

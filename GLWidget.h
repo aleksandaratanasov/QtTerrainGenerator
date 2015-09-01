@@ -13,6 +13,7 @@ private:
 
   bool toggleWireframeFlag;
 
+  bool toggleTranslation;
   int xRot;
   int yRot;
   int zRot;
@@ -35,11 +36,15 @@ private:
   void mouseMoveEvent(QMouseEvent *event);
   void wheelEvent(QWheelEvent *event);
 
-  // Rotate around x, y and z axes using scrollbars
+  // Rotation
   void setXRotation(int angle);
   void setYRotation(int angle);
   void setZRotation(int angle);
-  void setZoom(int zoomDirection);
+
+  // Translation
+  void setVerticalTranslation(int units);   // Up/Down
+  void setHorizontalTranslation(int units); // Left/Right
+  void setZoom(int zoomDirection);          // Nearer/Closer to viewer
 //  void setStatus(QString statusMsg);  // moved to public slots
 
 public slots:
