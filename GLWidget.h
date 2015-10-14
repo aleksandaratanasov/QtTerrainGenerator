@@ -18,7 +18,9 @@ private:
   int yRot;
   int zRot;
   QPoint lastPos;
-  float zZoom;
+  float xTrans;
+  float yTrans;
+  float zZoom;  // zTrans
   QString status; // TODO Display widget status in the statusbar of MainWindow
 
   bool toggleTerrainF, togglePlantsF, toggleWaterF, toggleLightF;
@@ -42,8 +44,8 @@ private:
   void setZRotation(int angle);
 
   // Translation
-  void setVerticalTranslation(int units);   // Up/Down
-  void setHorizontalTranslation(int units); // Left/Right
+  void setVerticalTranslation(int speed);   // Up/Down
+  void setHorizontalTranslation(int speed); // Left/Right
   void setZoom(int zoomDirection);          // Nearer/Closer to viewer
 //  void setStatus(QString statusMsg);  // moved to public slots
 
@@ -66,6 +68,11 @@ signals:
   void xRotationChanged(int angle);
   void yRotationChanged(int angle);
   void zRotationChanged(int angle);
+  // Translate along x, y and z (zoom) axes using the mouse
+  void xTranslationChanged(int x);
+  void yTranslationChanged(int y);
+  void zTranslationChanged(float z);
+  // Statusbar updates
   void statusChanged(QString statusMsg);
 };
 

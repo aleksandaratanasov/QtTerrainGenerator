@@ -22,9 +22,13 @@ GLWidget::GLWidget(QWidget *parent) :
   toggleWireframeFlag = false;
 
   toggleTranslation = false;
+
   xRot = 0;
   yRot = 0;
   zRot = 0;
+
+  xTrans = 0.0;
+  yTrans = 0.0;
   zZoom = -2.0;
 
   status = "Initialization done";
@@ -47,7 +51,7 @@ void GLWidget::paintGL() {
 //  glRotatef(.5, 1, 1, 1);
   glLoadIdentity();
   //glTranslatef(0.0, 0.0, -2.0);
-  glTranslatef(0., 0., zZoom);
+  glTranslatef(xTrans, yTrans, zZoom);
   glRotatef(xRot / 16.0, 1.0, 0.0, 0.0);
   glRotatef(yRot / 16.0, 0.0, 1.0, 0.0);
   glRotatef(zRot / 16.0, 0.0, 0.0, 1.0);
@@ -94,6 +98,7 @@ void GLWidget::mousePressEvent(QMouseEvent *event) {
 
 void GLWidget::mouseMoveEvent(QMouseEvent *event) {
 //  std::cout << "Mouse moved" << std::endl;
+  // Size of dx and dy represent the speed of movement along the respective axis
   int dx = event->x() - lastPos.x();
   int dy = event->y() - lastPos.y();
 
@@ -111,6 +116,9 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event) {
   if(toggleTranslation) {
     // Translate camera horizontally and vertically here
     std::cout << "Translation activated: moving camera..." << std::endl;
+    std::cout << "X: " << dx << " | Y: " << dy << std::endl;
+    setVerticalTranslation(dy);
+    setHorizontalTranslation(dx);
   }
 }
 
@@ -159,6 +167,27 @@ void GLWidget::setZRotation(int angle)
   }
 }
 
+void GLWidget::setVerticalTranslation(int y)
+{
+  // Covers both positive and negative values for y
+  // The multiplication with -1 inverts the movement so that moving the mouse cursor upwards translates upwards
+  // The factor .01 seems to offer very smooth yet fast enough movement
+  yTrans += .01 * y * (-1);
+  setStatus("Translation along y axis with " + QString::number(yTrans, 'g', 3));
+  emit yTranslationChanged(yTrans);
+  updateGL();
+}
+
+void GLWidget::setHorizontalTranslation(int x)
+{
+  // Covers both positive and negative values for x
+  // The factor .01 seems to offer very smooth yet fast enough movement
+  xTrans += .01 * x;
+  setStatus("Translation along x axis with " + QString::number(xTrans, 'g', 3));
+  emit xTranslationChanged(xTrans);
+  updateGL();
+}
+
 void GLWidget::setZoom(int zoomDirection) {
   // We increase the Z distance (the axis which points outwards the scene in the direction of the user)
   // based on the direction
@@ -169,12 +198,14 @@ void GLWidget::setZoom(int zoomDirection) {
 void GLWidget::zoomIn() {
   zZoom += .1;
   setStatus("Zoom in to " + QString::number(zZoom, 'g', 3));
+  emit zTranslationChanged(zZoom);
   updateGL();
 }
 
 void GLWidget::zoomOut() {
   zZoom -= .1;
   setStatus("Zoom out to " + QString::number(zZoom, 'g', 3));
+  emit zTranslationChanged(zZoom);
   updateGL();
 }
 
